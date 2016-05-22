@@ -10,13 +10,19 @@ class StaticPagesControllerTest < ActionController::TestCase
   test "should get help" do
     get :help
     assert_response :success
-    assert_select "title", "Twitter Clone | help"
+    assert_select "title", "Twitter Clone | Help"
   end
 
   test "should get about" do
     get :about
     assert_response :success
-    assert_select "title", "Twitter Clone | about"
+    assert_select "title", "Twitter Clone | About"
+  end
+
+  test "should get contact" do
+    get :contact
+    assert_response :success
+    assert_select "title", "Twitter Clone | Contact"
   end
 
 end
