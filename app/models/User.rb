@@ -4,13 +4,13 @@ class User < ActiveRecord::Base
   #VALIDATIONS
 	#Email
   before_save { self.email = email.downcase }
-  VALID_EMAIL_REGEX = /\A[a-z]+@[a-z]+\.[a-z]+\z/i
+  VALID_EMAIL_REGEX = /\A[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]/i
   validates :email, presence: true, length: {maximum: 200}, format: { with:  VALID_EMAIL_REGEX }, uniqueness: { case_sensitive: false }
   #Name
   validates :name, presence: true, length: {maximum: 50}
   #Password
   has_secure_password
-  validates :password, presence: true, length: { minimum: 6 }
+  validates :password, presence: true, length: { minimum: 6 }, allow_nil: true
 
   #CLASS METHODS
   # Returns the hash digest of the given string.
