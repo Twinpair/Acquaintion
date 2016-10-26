@@ -1,12 +1,15 @@
 <% provide(:title, 'All users') %>
-<h1>All users</h1>
 
-<%= will_paginate %>
+<div>
+	<h1>All users</h1>
 
-<ul class="users">
-  <% @users.each do |user| %>
-    <%= render @users %>
-  <% end %>
-</ul>
+	<%= will_paginate %>
 
-<%= will_paginate %>
+	<ul class="users">
+	  <% @users.each do |user| %>
+	    <%= render @users %>
+	  <% end %>
+	</ul>
+
+	<%= will_paginate %>
+</div>
