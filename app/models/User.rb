@@ -4,10 +4,8 @@ class User < ActiveRecord::Base
   has_many :passive_relationships, class_name: "Relationship", foreign_key: "followed_id", dependent: :destroy
   has_many :following, through: :active_relationships, source: :followed
   has_many :followers, through: :passive_relationships, source: :follower
-  attr_accessor :remember_token, :activation_token, :reset_token
-  before_create :create_activation_digest
+  attr_accessor :remember_token, :reset_token
   before_save :downcase_email
-
 
   #VALIDATIONS
 	#Email
@@ -50,16 +48,6 @@ class User < ActiveRecord::Base
     update_attribute(:remember_digest, nil)
   end
 
-  #Activates an account
-  def activate
-    update_columns(activated: true, activated_at: Time.zone.now)
-  end
-
-  # Sends activation email.
-  def send_activation_email
-    UserMailer.account_activation(self).deliver_now
-  end
-
   # Sets the password reset attributes.
   def create_reset_digest
     self.reset_token = User.new_token
@@ -98,14 +86,10 @@ class User < ActiveRecord::Base
   end
 
 private
+
   # Downcase email before being saved
   def downcase_email
     self.email = email.downcase
   end
 
-  # Create the activation token and digest.
-  def create_activation_digest
-    self.activation_token  = User.new_token()
-    self.activation_digest = User.digest(activation_token)
-  end
 end
