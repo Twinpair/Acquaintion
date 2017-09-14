@@ -6,6 +6,7 @@ class User < ActiveRecord::Base
   has_many :followers, through: :passive_relationships, source: :follower
   attr_accessor :remember_token, :reset_token
   before_save :downcase_email
+  before_save :downcase_username
   mount_uploader :picture, UserUploader
   
 
@@ -97,6 +98,11 @@ private
   # Downcase email before being saved
   def downcase_email
     self.email = email.downcase
+  end
+
+  # Downcase username before being saved
+  def downcase_email
+    self.username = username.downcase
   end
 
   # Validates the size of an uploaded picture.
