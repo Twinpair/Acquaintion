@@ -7,7 +7,4 @@ class StaticPagesController < ApplicationController
       @feed_items  = Micropost.order(created_at: :asc)
     end
   end
-
-  def about
-  end
 end
