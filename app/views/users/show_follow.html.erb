@@ -3,9 +3,7 @@
   <aside class="col-md-4">
     <section class="user_info">
       <%= image_tag @user.picture.url ? @user.picture.url : "default-profile-image" %>
-      <h1><%= @user.name %></h1>
-      <span><%= link_to "view my profile", @user %></span>
-      <span><b>Microposts:</b> <%= @user.microposts.count %></span>
+      <h1><a href="/users/<%= current_user.id %>"><%= current_user.name %> (@<%= current_user.username %>)</a></h1>
     </section>
     <section class="stats">
       <%= render 'shared/stats' %>

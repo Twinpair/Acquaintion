@@ -22,7 +22,11 @@ section {
 }
 
 textarea {
-  resize: vertical;
+  resize: none;
+}
+
+.small-text{
+  font-size: 95%;
 }
 
 .center {

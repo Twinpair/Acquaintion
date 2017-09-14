@@ -4,15 +4,19 @@
     <section class="user_info">
       <h1>
         <%= image_tag @user.picture.url ? @user.picture.url : "default-profile-image" %>
-        <%= @user.name %>
+        @<%= @user.username %>
       </h1>
     </section>
-    <section class="stats">
+    <section class="stats" style="margin-bottom: 10px;">
       <%= render 'shared/stats' %>
     </section>
     <% if current_user && current_user.id == @user.id %>
       <p><%= link_to "Account Settings", edit_user_path(current_user) %></p> 
     <% end %>
+    <b>
+      <p><%= @user.name %></p>
+      <p><%= @user.email %></p>
+    </b>
   </aside>
   <div class="col-md-8">
     <%= render 'follow_form' if logged_in? %>

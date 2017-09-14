@@ -1,6 +1,6 @@
 <li>
   <%= image_tag user.picture.url ? user.picture.url : "default-profile-image", class: "post-profile-image" %>
-  <%= link_to user.name, user %>
+  <a href="/users/<%= user.id %>"><%= user.name %> <span class="small-text">(@<%= user.username %>)</span></a>
   <% if current_user && current_user.admin? && !current_user?(user) %>
     | <%= link_to "delete", user, method: :delete, data: { confirm: "You sure?" } %>
   <% end %>

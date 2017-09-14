@@ -15,9 +15,13 @@ class User < ActiveRecord::Base
   validates :email, presence: true, length: {maximum: 200}, format: { with:  VALID_EMAIL_REGEX }, uniqueness: { case_sensitive: false }
   #Name
   validates :name, presence: true, length: {maximum: 50}
+  #Username
+  VALID_USERNAME_REGEX = /\A[a-z0-9][_a-z0-9]{1,30}\Z/i
+  validates :username, presence: true, length: {maximum: 30}, format: {with: VALID_USERNAME_REGEX, message: "must start with a letter or number. It can only contain characters (a-z), (1-9) or underscore '_' "}, uniqueness: { case_sensitive: false }
   #Password
   has_secure_password
   validates :password, presence: true, length: { minimum: 6 }, allow_nil: true
+  #Profile Image
   validate  :picture_size
 
   #CLASS METHODS
