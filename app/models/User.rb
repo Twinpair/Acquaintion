@@ -6,9 +6,11 @@ class User < ActiveRecord::Base
   has_many :followers, through: :passive_relationships, source: :follower
   attr_accessor :remember_token, :reset_token
   before_save :downcase_email
+  mount_uploader :picture, UserUploader
+  
 
   #VALIDATIONS
-	#Email
+  #Email
   VALID_EMAIL_REGEX = /\A[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]/i
   validates :email, presence: true, length: {maximum: 200}, format: { with:  VALID_EMAIL_REGEX }, uniqueness: { case_sensitive: false }
   #Name
@@ -16,6 +18,7 @@ class User < ActiveRecord::Base
   #Password
   has_secure_password
   validates :password, presence: true, length: { minimum: 6 }, allow_nil: true
+  validate  :picture_size
 
   #CLASS METHODS
   # Returns the hash digest of the given string.
@@ -90,6 +93,13 @@ private
   # Downcase email before being saved
   def downcase_email
     self.email = email.downcase
+  end
+
+  # Validates the size of an uploaded picture.
+  def picture_size
+    if picture.size > 2.megabytes
+      errors.add(:base, "Please select a smaller file size image")
+    end
   end
 
 end

@@ -141,15 +141,6 @@ aside {
   }
 }
 
-.gravatar {
-  float: left;
-  margin-right: 10px;
-}
-
-.gravatar_edit {
-  margin-top: 15px;
-}
-
 .stats {
   overflow: auto;
   margin-top: 0;
@@ -176,9 +167,6 @@ aside {
 .user_avatars {
   overflow: auto;
   margin-top: 10px;
-  .gravatar {
-    margin: 1px 1px;
-  }
   a {
     padding: 0;
   }
@@ -268,11 +256,6 @@ input {
     display: block;
     margin-left: 60px;
   }
-  .gravatar {
-    float: left;
-    margin-right: 10px;
-    margin-top: 5px;
-  }
 }
 
 aside {
@@ -292,4 +275,8 @@ span.picture {
 }
 #header-text{
   color: white;
+}
+
+.post-profile-image{
+  height: 50px;
 }

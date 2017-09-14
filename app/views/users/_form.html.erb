@@ -1,6 +1,20 @@
 <%= form_for(@user) do |f| %>
-	<%= render 'shared/error_messages', object: f.object %>
-	
+  <%= render 'shared/error_messages', object: f.object %>
+  
+  <% if current_user %>
+  <div class="col-md-12" style="margin-bottom: 10px;">
+    <div class="col-md-6 col-md-offset-3">
+      <% if @user.picture? %>
+        <label>Change Profile Picture</label><br>
+        <%= image_tag(@user.picture.url) %><br><br>
+      <% else %>
+        <label>Profile Picture</label>
+      <% end %>
+      <%= f.file_field :picture, accept: 'image/jpeg,image/gif,image/png', class: 'btn btn-success', id: 'user_picture' %>
+    </div>
+  </div>
+  <% end %>
+
   <%= f.label :name %>
   <%= f.text_field :name, class: 'form-control' %>
 
@@ -12,5 +26,6 @@
 
   <%= f.label :password_confirmation, "Confirmation" %>
   <%= f.password_field :password_confirmation, class: 'form-control' %><br>
+
   <%= f.submit yield(:button_text), class: "btn btn-primary" %>
 <% end %>
