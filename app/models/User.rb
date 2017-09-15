@@ -101,7 +101,7 @@ private
   end
 
   # Downcase username before being saved
-  def downcase_email
+  def downcase_username
     self.username = username.downcase
   end
 
