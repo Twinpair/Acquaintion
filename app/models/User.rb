@@ -8,6 +8,9 @@ class User < ActiveRecord::Base
   before_save :downcase_email
   before_save :downcase_username
   mount_uploader :picture, UserUploader
+
+  # Amount of users shown per page with pagination
+  self.per_page = 20
   
 
   #VALIDATIONS

@@ -5,11 +5,19 @@ class UsersController < ApplicationController
 
   def index
     @users = User.paginate(page: params[:page], per_page: 10)
+    respond_to do |format|
+      format.html
+      format.js { render 'users/next_page' }
+    end
   end
 
   def show
     @user = User.find(params[:id]) 
-    @microposts = @user.microposts
+    @microposts = @user.microposts.paginate(page: params[:page])
+    respond_to do |format|
+      format.html
+      format.js { render 'microposts/next_page' }
+    end
   end
 
   def new
@@ -45,17 +53,22 @@ class UsersController < ApplicationController
   end
 
   def following
-    @title = "Following"
     @user  = User.find(params[:id])
     @users = @user.following.paginate(page: params[:page])
-    render 'show_follow'
+    respond_to do |format|
+      format.html
+      format.js { render 'users/next_page' }
+    end
   end
 
   def followers
     @title = "Followers"
     @user  = User.find(params[:id])
     @users = @user.followers.paginate(page: params[:page])
-    render 'show_follow'
+    respond_to do |format|
+      format.html
+      format.js { render 'users/next_page' }
+    end
   end
 
 private

@@ -1,21 +1,23 @@
-<% provide(:title, @title) %>
+<% provide(:title, "Following") %>
 <div class="row">
   <aside class="col-md-4">
     <section class="user_info">
       <%= image_tag @user.picture.url ? @user.picture.url : "default-profile-image" %>
-      <h1><a href="/users/<%= current_user.id %>"><%= current_user.name %> (@<%= current_user.username %>)</a></h1>
+      <h1><a href="/users/<%= @user.id %>"><%= @user.name %> (@<%= @user.username %>)</a></h1>
     </section>
     <section class="stats">
       <%= render 'shared/stats' %>
     </section>
   </aside>
   <div class="col-md-8">
-    <h3><%= @title %></h3>
+    <h3>Following</h3>
     <% if @users.any? %>
       <ul class="users follow">
         <%= render @users %>
       </ul>
-      <%= will_paginate %>
+      <div id="infinite-scrolling">
+        <%= will_paginate @users %>
+      </div>
     <% end %>
   </div>
 </div>

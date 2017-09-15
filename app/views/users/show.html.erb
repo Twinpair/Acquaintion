@@ -22,9 +22,14 @@
     <%= render 'follow_form' if logged_in? %>
     <% if @user.microposts.any? %>
       <h3>Microposts (<%= @user.microposts.count %>)</h3>
-      <ol class="microposts">
-        <%= render @microposts %>
-      </ol>
+      <div id="infinite-feed">
+        <ol class="microposts">
+          <%= render @microposts %>
+        </ol>
+      </div>
+      <div id="infinite-scrolling">
+        <%= will_paginate @microposts %>
+      </div>
     <% else  %>  
        <h3>No posts to show </h3>
     <% end %>

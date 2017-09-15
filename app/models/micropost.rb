@@ -6,6 +6,9 @@ class Micropost < ActiveRecord::Base
   validates :content, presence: true, length: {maximum: 140}
   validate  :picture_size
 
+ # Amount of posts shown per page with pagination
+  self.per_page = 10
+
 private
 
   # Validates the size of an uploaded picture.
