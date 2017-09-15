@@ -30,5 +30,16 @@
   <%= f.label :password_confirmation, "Confirmation" %>
   <%= f.password_field :password_confirmation, class: 'form-control' %><br>
 
-  <%= f.submit yield(:button_text), class: "btn btn-primary" %>
+  <% if current_user %>
+    <div class="col-xs-6">
+      <a href="/users/<%= @user.id %>" class="btn btn-danger" id="cancel-button">Cancel</a>
+    </div>
+    <div class="col-xs-6">
+      <%= f.submit yield(:button_text), class: "btn btn-primary" %>
+    </div>
+  <% else %>
+    <div class="col-xs-12">
+      <%= f.submit yield(:button_text), class: "btn btn-primary" %><br><br>
+    </div>
+  <% end %>
 <% end %>

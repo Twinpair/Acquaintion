@@ -83,7 +83,8 @@ p {
 
 /* footer */
 
-footer {
+#footer {
+  text-align: center;
   margin-top: 45px;
   padding-top: 5px;
   border-top: 1px solid $gray-medium-light;
@@ -94,16 +95,40 @@ footer {
       color: $gray-darker;
     }
   }
+  #facebook{
+    color: #3b5998;
+  }
   small {
     float: left;
   }
   ul {
-    float: right;
     list-style: none;
     li {
       float: left;
       margin-left: 15px;
     }
+  }
+}
+
+ul.footer-social li{
+  display: inline-block;
+  margin-right: 10px;
+}
+
+@media (min-width: 700px){
+  ul.footer-social{
+    float: right;
+  }
+}
+
+.fnav{ vertical-align: middle;}
+
+@media (max-width: 500px){
+  .fnav{
+   margin: auto auto;
+  }
+  #copyright{
+    font-size: 14px;
   }
 }
 
@@ -222,6 +247,10 @@ input {
   margin-left: 0;
 }
 
+#cancel-button{
+  width: 100%
+}
+
 /* Users index */
 
 .users {
@@ -251,6 +280,7 @@ input {
     display: block;
     margin-left: 60px;
     img {
+      width: 100%;
       display: block;
       padding: 5px 0;
     }

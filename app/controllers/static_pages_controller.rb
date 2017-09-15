@@ -8,7 +8,7 @@ class StaticPagesController < ApplicationController
         format.js { render 'microposts/next_page' }
       end
     else
-      @feed_items  = Micropost.order(created_at: :asc).paginate(page: params[:page])
+      @microposts  = Micropost.order(created_at: :asc).paginate(page: params[:page])
       respond_to do |format|
         format.html
         format.js { render 'microposts/next_page' }
