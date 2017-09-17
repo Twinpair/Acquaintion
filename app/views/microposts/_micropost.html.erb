@@ -3,7 +3,7 @@
   <span class="user"><a href="/users/<%= micropost.user.id %>"><%= micropost.user.name %> <span class="small-text">(@<%= micropost.user.username %>)</span></a></span>
   <span class="content">
     <%= micropost.content %>
-    <%= image_tag micropost.picture.url if micropost.picture? %>
+    <%= image_tag micropost.picture.url, class: "post-picture" if micropost.picture? %>
   </span>
   <span class="timestamp">
     Posted <%= time_ago_in_words(micropost.created_at) %> ago.

@@ -280,7 +280,6 @@ input {
     display: block;
     margin-left: 60px;
     img {
-      width: 100%;
       display: block;
       padding: 5px 0;
     }
@@ -291,6 +290,12 @@ input {
     margin-left: 60px;
   }
 }
+@media (max-width: 500px){
+  .post-picture{
+    width: 100%
+  }
+}
+
 
 aside {
   textarea {
