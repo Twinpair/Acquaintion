@@ -2,8 +2,10 @@
 
 one:
   content: MyText
-  user_id: 
+  user_id: 1000
+  picture: ""
 
 two:
   content: MyText
-  user_id: 
+  user_id: 1000
+  picture: "" 

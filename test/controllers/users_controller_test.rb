@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class UsersControllerTest < ActionController::TestCase
+class UsersControllerTest < ActionDispatch::IntegrationTest
 	def setup
     @user = users(:eric)
     @other_user = users(:archer)
@@ -8,12 +8,13 @@ class UsersControllerTest < ActionController::TestCase
 
   test "should redirect index when not logged in" do
     get users_path
-    assert_redirected_to login_url
+    assert_response :success
   end
 
   test "should get users/new" do
-    get :new
+    get "/signup"
     assert_response :success
+    assert_select "title", "Acquaintion | Sign up"
   end
 
   test "should redirect edit when not logged in" do
@@ -31,8 +32,8 @@ class UsersControllerTest < ActionController::TestCase
   test "should not allow the admin attribute to be edited via the web" do
     log_in_as(@other_user)
     assert_not @other_user.admin?
-    patch user_path(@other_user), params = {user: { password: FILL_IN, password_confirmation: FILL_IN, admin: FILL_IN } }
-    assert_not @other_user.FILL_IN.admin?
+    patch user_path(@other_user), params = {user: { password: "password", password_confirmation: "password", admin: "1" } }
+    assert_not @other_user.admin?
   end
 
   test "should redirect edit when logged in as wrong user" do
