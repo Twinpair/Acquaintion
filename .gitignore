@@ -24,3 +24,6 @@
 
 # Ignore .DS_Store
 .DS_Store
+
+# Ignore files created by simplecov gem
+coverage
