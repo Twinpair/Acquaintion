@@ -25,10 +25,10 @@ end
 class ActionDispatch::IntegrationTest
 
   # Log in as a particular user.
-  def log_in_as(user, password: 'password', remember_me: '1')
+  def log_in_as(user, remember_me: '0')
     post login_path, session: { 
                         email: user.email,
-                        password: password,
+                        password: 'password',
                         remember_me: remember_me 
                       }
   end
