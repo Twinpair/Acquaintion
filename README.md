@@ -1,4 +1,4 @@
-## Acquaintion
+## Acquaintion [![Build Status](https://travis-ci.org/Twinpair/Acquaintion.svg?branch=master)](https://travis-ci.org/Twinpair/Acquaintion)
 
 "Follow and be followed" Acquaintion is a basic Twitter clone built with the Ruby on Rails framework. 
 
